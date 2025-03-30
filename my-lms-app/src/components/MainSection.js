@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useEffect } from 'react';
 import courses from '../data/courses';
 import testimonials from '../data/testimonials';
@@ -9,7 +8,6 @@ function compare(){
 }
 
 function getRandom(arr, count){
-    var num = 0.5 - Math.random();
     arr.sort(compare)
     return arr.slice(0, count)
 }
@@ -31,7 +29,7 @@ function MainSection() {
             <div className="about">
                 <h2>About LMS</h2>
                 <p>
-                    This Learning Management System lets you explore courses, enroll, and iew student reviews.
+                    This Learning Management System lets you explore courses, enroll, and view student reviews.
                 </p>
             </div>
             <div className="featuredCourses">
