@@ -1,36 +1,40 @@
 import { useState } from "react";
 
-function CourseItem (props) {
-    const [display, setDisplay] = useState(false);
+function CourseItem({ course }) {
+    const [hover, setHover] = useState(false);
 
-    return props.courses.map(function(course) {
-        function showDisplay() {
-            setDisplay(true);
-            const courseDesc = document.getElementById(descId);
-            courseDesc.style.display = 'block';
+    function enrollCourse(course) {
+        let enrolledCourses = [];
+        const stored = localStorage.getItem("enrolledCourses");
+
+        if (stored !== null) {
+            enrolledCourses = JSON.parse(stored);
         }
 
-        function hideDisplay() {
-            setDisplay(false);
-            const courseDesc = document.getElementById(descId);
-            courseDesc.style.display = 'none';
+        const alreadyEnrolled = enrolledCourses.find(cour => cour.id == course.id);
+        
+        if (!alreadyEnrolled) {
+            enrolledCourses.push(course);
+            localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+            window.dispatchEvent(new Event("enrollmentUpdated"));
         }
+    }
 
-        var courseId = 'course' + course.id;
-        var descId = 'desc' + course.id;
-
-        return (
-            <div className='courseCard' id={courseId} onMouseOver={showDisplay} onMouseLeave={hideDisplay}>
-                <img src={course.image} alt={course.name}/>
-                <div>{course.name}</div>
-                <div>Instructor: {course.instructor}
-                </div>
-                <div id={descId} style={{display: 'none'}}>{course.description}</div>
-                <button>Enroll Now</button>
-                <br/><br/>
-            </div>
-        );
-    });
+    return (
+        <div className="courseCard" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+        <img src={course.image} alt={course.name} />
+        <div>
+            {course.name}
+        </div>
+        <div>
+            Instructor: {course.instructor}
+        </div>
+        <br></br>
+        {hover && (<div>{course.description}</div>)}
+        <button onClick={() => enrollCourse(course)}>Enroll Now</button>
+        <br></br>
+        </div>
+    );
 }
 
 export default CourseItem;
