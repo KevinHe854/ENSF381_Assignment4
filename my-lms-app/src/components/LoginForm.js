@@ -20,7 +20,6 @@ function LoginForm () {
         setPassword(document.getElementById('password').value);
     }
 
-    // Update on submit
     useEffect(() => {
 
         if (password.length < 8) {
@@ -65,7 +64,6 @@ function LoginForm () {
             });
     }, [username, password, navigate]);
 
-    // Initial render
     useEffect(() => {
         setType('');
         setMessage('');

@@ -2,12 +2,14 @@ import "./courseCatalog.css";
 import CourseItem from "./CourseItem";
 import courses from "../data/courses";
 
-function CourseCatalog () {
+function CourseCatalog({ onEnroll }) {
     return (
         <div>
             <h1>Course Catalog</h1>
             <div className='catalog'>
-                <CourseItem courses={courses}/>
+                {courses.map(course => (
+                    <CourseItem key={course.id} course={course} onEnroll={onEnroll} />
+                ))}
             </div>
         </div>
     );
