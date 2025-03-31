@@ -73,7 +73,7 @@ function LoginForm () {
 
     return (
         <div className='loginForm'>
-            <form  className='loginForm'>
+            <form className='loginForm'>
                 <h1 className='loginForm'>Login</h1>
                 <label>Username</label>
                 <br/>
