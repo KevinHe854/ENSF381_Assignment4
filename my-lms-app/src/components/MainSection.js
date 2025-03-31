@@ -54,9 +54,9 @@ function MainSection() {
                             <h4>{test.studentName}</h4>
                             <p>{test.review}</p>
                             <p>{'★'.repeat(test.rating) + '☆'.repeat(5 - test.rating)}</p>
-            </div>
-        );
-        })}
+                        </div>
+                    );
+                })}
             </div>
 
         </div>

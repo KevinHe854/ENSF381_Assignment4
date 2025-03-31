@@ -26,6 +26,14 @@
     margin-bottom: 10px;
 }
 
+.courseCard img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
 .testimonials {
     border: 1px solid white;
     padding: 10px;
